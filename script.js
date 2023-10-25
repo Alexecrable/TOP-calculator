@@ -15,6 +15,10 @@ const add = function(x, y) {
 
 
 const divide = function(x, y) {
+    if(y == 0){
+        
+        return  -1;
+    }
     return x/y;
 };
 
@@ -61,6 +65,11 @@ function operation(op){
             
             console.log(x,y);
             operating_array[0] = calculate(x, y, operating_array[op_index]).toFixed(2);
+            if (operating_array[0] == -1){
+                operating_array = ["LOL"];
+                return;
+            }
+            
             operating_array = [operating_array[0]];
             console.log(operating_array);
 
@@ -86,7 +95,13 @@ let nb_of_op = 0;
 let op_index = -1;
 let display_res = false;
 function operating_choose(op){
-    
+    if(displayer.textContent === "LOL"){
+        operating_array = [];
+            i = 0;
+            nb_of_op = 0;
+            display_res = false;
+            op_index = -1;
+    }
     
     if((op === "+" || op === "-" || op === "*" || op === "/") ){
         if(i == 0){return 0;}
@@ -158,6 +173,7 @@ calc_buttons.forEach((button) => {
     button.addEventListener(
         "click",
         ()=>{
+            
             operating_choose(button.textContent);
         }
     )
