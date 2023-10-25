@@ -26,3 +26,14 @@ const add = function(x, y) {
 const divide = function(a, b) {
     return a/b;
 }
+
+const calc_buttons = document.querySelectorAll("button");
+console.log(calc_buttons);
+calc_buttons.forEach((button) => {
+    button.addEventListener(
+        "click",
+        ()=>{
+            alert(button.textContent);
+        }
+    )
+});
